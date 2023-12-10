@@ -9,7 +9,7 @@ var questions = [
     {
         question: "The condition in an if / else statement is enclosed within_____ .",
         choices: ["quotes", "curly brackets", "parenthesis", "square brackets"],
-        answer: ""
+        answer: "parenthesis"
     },
     {
         question: "String values must be enclosed within _____ when being assigned to variables.",
