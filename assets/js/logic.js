@@ -2,9 +2,9 @@
 
 // hide element - I have .hide class in css
 
-// A start button that when clicked a timer starts and the first question appears. (button style is in css)
+// A start button that when clicked a timer starts and the first question appears. 
 
-// Questions contain buttons for each answer.
+// Questions contain buttons for each answer. (button style is in css)
 
 // Create questions using DOM
 // Questions will be ordered lists
@@ -17,8 +17,16 @@
 // .appendChild(tag)
 
 var timerEl = document.querySelector(".timer"); //do I need it?
-var timeEl = document.querySelector("#time")
+var timeEl = document.querySelector("#time");
 var timeLeft = 0; 
+var startScreen = document.querySelector("#start-screen");
+var endScreen = document.querySelector("#end-screen");
+var startBttn = document.querySelector("#start");
+var questionsEl = document.querySelector("#questions")
+var questionTitle = document.querySelector("#question-title");
+var questionChoices = document.querySelector("#choices");
+var questionIndex = 0;
+
 
 // Timer function //FUNCTIONS AS EXPECTED
 function timer(){
@@ -30,21 +38,40 @@ function timer(){
         // clear interval when the time left reaches 0
         if(timeLeft === 0){
             clearInterval(timerInterval)
+            endScreen.setAttribute("class", "")
         }
     }, 1000);
 }
-
-var startBttn = document.querySelector("#start")
 
 // add an event listener to the start button, event = click, function
 startBttn.addEventListener("click", function(){
     // timer function called
     timer();
+    // hide start screen
+    startScreen.setAttribute("class", "hide");
+    // unhide questions div
+    questionsEl.setAttribute("class", "");
+    // display the first question
+    //function display question called
+    displayQuestion()    
 });
-    
-    // display the first question - .textContent
+ 
 
-// function to display question
+
+// function to display first question - .textContent
+function displayQuestion(){
+    questionTitle.textContent = questions[questionIndex].question;
+    console.log(questionTitle);
+    // display choices in buttons
+} 
+
+
+//function to display next question
+// function nextQuestion(){
+
+// }
+
+
 
 // If the answer clicked was incorrect then subtract time from the clock minus 10 seconds
 
