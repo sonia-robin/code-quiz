@@ -53,7 +53,8 @@ startBttn.addEventListener("click", function(){
     questionsEl.setAttribute("class", "");
     // display the first question
     //function display question called
-    displayQuestion()    
+    displayQuestion() 
+    displayChoices()   
 });
  
 
@@ -62,8 +63,19 @@ startBttn.addEventListener("click", function(){
 function displayQuestion(){
     questionTitle.textContent = questions[questionIndex].question;
     console.log(questionTitle);
-    // display choices in buttons
+    // call function displayChoices
 } 
+
+function displayChoices(){
+    // display choices in buttons .createElement
+    for (var i = 0; i < questions[questionIndex].choices.length; i++){
+        var choicesBtn = document.createElement("button");
+        choicesBtn.textContent = i+1 +". " + questions[questionIndex].choices[i];
+        document.getElementById("questions").appendChild(choicesBtn);
+        console.log(choicesBtn);
+        choicesBtn.setAttribute("style", "display:block");
+    }
+}
 
 
 //function to display next question
