@@ -53,37 +53,48 @@ startBttn.addEventListener("click", function(){
     questionsEl.setAttribute("class", "");
     // display the first question
     //function display question called
-    displayQuestion() 
-    displayChoices()   
+    displayQuestion(); 
 });
- 
 
 
 // function to display first question - .textContent
 function displayQuestion(){
     questionTitle.textContent = questions[questionIndex].question;
     console.log(questionTitle);
-    // call function displayChoices
-} 
-
-function displayChoices(){
-    // display choices in buttons .createElement
     for (var i = 0; i < questions[questionIndex].choices.length; i++){
         var choicesBtn = document.createElement("button");
         choicesBtn.textContent = i+1 +". " + questions[questionIndex].choices[i];
-        document.getElementById("questions").appendChild(choicesBtn);
+        document.getElementById("choices").appendChild(choicesBtn);
         console.log(choicesBtn);
-        choicesBtn.setAttribute("style", "display:block");
-    }
-}
+    } 
+} 
 
+var choicesBtns = document.querySelector(".choices")
+// console.log(choicesBtns);
 
 //function to display next question
-// function nextQuestion(){
+function displayNextQuestion (){
+    if(questionIndex < questions.length-1){
+    document.getElementById("choices").replaceChildren()
+    questionIndex++;
+    displayQuestion();
+    }
+    else {endQuiz()}
+}
 
-// }
+// add event listener to a choices button clicked
+choicesBtns.addEventListener("click", function(event){
+    var element = event.target;
+    if(element.matches("button")){
+        displayNextQuestion();
+    }
+});
 
-
+// end quiz function
+function endQuiz(){
+    questionsEl.setAttribute("class", "hide");
+    endScreen.setAttribute("class", "")
+}
 
 // If the answer clicked was incorrect then subtract time from the clock minus 10 seconds
 
